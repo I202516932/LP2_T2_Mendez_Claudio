@@ -17,37 +17,37 @@
 				<h1 class="card-title text-center">Orden de compra nueva</h1>
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-6">
-						<form class="row g-2" method="post" novalidate>
+						<form class="row g-2" th:action="@{/orden/registrar}" th:object="${orden}" method="post">
 							<div class="col-md-6 position-relative">
 								<label for="proveedor" class="form-label">Proveedor</label>
-								<select class="form-select" id="proveedor" name="proveedor" required>
+								<select class="form-select" id="proveedor" name="proveedor.idProveedor" required>
 									<option value="">--Seleccione--</option>
+									<option th:each="p : ${proveedores}" th:value="${p.idProveedor}"
+										th:text="${p.ruc + ' - ' + p.razonSocial}"></option>
 								</select>
 							</div>
 							<div class="col-md-6 position-relative">
 								<label for="monto" class="form-label">Monto</label>
 								<input type="number" class="form-control" step="0.01" placeholder="0.00" id="monto"
-									name="monto" required>
+									th:field="*{monto}" required>
 							</div>
 							<div class="col-md-12 position-relative">
 								<label for="direccionEntrega" class="form-label">Dirección de entrega</label>
 								<input type="text" class="form-control" placeholder="Ingrese una dirección de entrega"
-									id="direccionEntrega" name="direccionEntrega" required>
+									id="direccionEntrega" th:field="*{direccionEntrega}" required>
 							</div>
 							<div class="col-md-6 position-relative">
 								<label for="fechaEntrega" class="form-label">Fecha de entrega</label>
-								<input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+								<input type="date" class="form-control" id="fechaEntrega" th:field="*{fechaEntrega}"
+									required>
 							</div>
 							<div class="col-md-12 d-flex justify-content-between">
-								<!-- Botón Regresar -->
-								<a href="#" class="btn btn-outline-dark">
+								<a th:href="@{/orden/listado}" class="btn btn-outline-dark">
 									<i class="fa-solid fa-reply"></i> Regresar
 								</a>
-								<!-- Botón Registrar -->
 								<button type="submit" class="btn btn-primary">
 									<i class="fa-solid fa-floppy-disk"></i> Registrar
 								</button>
-								<!-- Botón Limpiar -->
 								<button type="reset" class="btn btn-secondary">
 									<i class="fa-solid fa-broom"></i> Limpiar
 								</button>

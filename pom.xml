@@ -8,7 +8,7 @@
 		<version>4.0.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.examen_t2</groupId>
+	<groupId>com.examenT2</groupId>
 	<artifactId>LP2_T2_Mendez_Claudio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LP2_T2_Mendez_Claudio</name>
